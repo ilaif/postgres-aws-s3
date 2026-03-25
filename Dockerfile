@@ -1,7 +1,5 @@
 # syntax=docker/dockerfile:1
 
-LABEL org.opencontainers.image.source="https://github.com/ilaif/postgres-aws-s3"
-
 # Build stage: compile postgres-aws-s3 extension
 FROM postgres:17 AS builder
 
@@ -21,6 +19,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 
 # Runtime stage: clean image with only the extension files copied in
 FROM postgres:17
+
+LABEL org.opencontainers.image.source="https://github.com/ilaif/postgres-aws-s3"
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
