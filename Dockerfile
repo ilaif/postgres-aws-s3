@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1
 
+LABEL org.opencontainers.image.source="https://github.com/ilaif/postgres-aws-s3"
+
 # Build stage: compile postgres-aws-s3 extension
 FROM postgres:17 AS builder
 
