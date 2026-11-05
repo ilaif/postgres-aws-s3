@@ -27,7 +27,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get update \
   && apt-get install -y \
     python3-boto3 \
-    postgresql-plpython3-17
+    postgresql-plpython3-17 \
+    postgresql-17-partman \
+    postgresql-17-cron
 
 # Copy compiled extension files from builder
 COPY --from=builder /usr/share/postgresql/17/extension/aws_s3* /usr/share/postgresql/17/extension/
